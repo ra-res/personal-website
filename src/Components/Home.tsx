@@ -1,5 +1,8 @@
-import "./App.scss";
-
 export default function Home() {
-  return "Hey";
+  return (
+    <div>
+      {" "}
+      <span> This is the home </span>{" "}
+    </div>
+  );
 }

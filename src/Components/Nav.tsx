@@ -1,8 +1,6 @@
 import * as React from "react";
 import "./Styles/Nav.scss";
 import MenuList from "./MenuList";
-import { Route, Link, Router } from "react-router-dom";
-import History from "../Routes/History";
 
 export default class Nav extends React.Component {
   state = { matches: window.matchMedia("(max-width: 10000px)").matches };
@@ -14,18 +12,15 @@ export default class Nav extends React.Component {
 
   public mapComponent = () => {
     return (
-      <Router history={History}>
-        {" "}
-        <p className="nav__title"> {"<Rares Purtan/>"} </p>
+      <div className="nav__container">
         {MenuList.map((item: any, index: any) => {
           return (
-            <Link to={item.url} className="nav__list-elem" key={index}>
+            <a href={item.url} className={item.class} key={index}>
               {item.title}
-              <Route path={item.url} component={item.cName} />
-            </Link>
+            </a>
           );
         })}
-      </Router>
+      </div>
     );
   };
 

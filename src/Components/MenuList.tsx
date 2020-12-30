@@ -1,18 +1,21 @@
 const MenuList = [
   {
-    title: "",
+    title: "<Rares Purtan/>",
     url: "/",
-    cName: "Home",
+    componentName: "Home",
+    class: "nav__title",
   },
   {
     title: "[About me]",
-    url: "/aboutme",
+    url: "/about",
     cName: "Aboutme",
+    class: "nav__list-elem",
   },
   {
     title: "[Projects]",
     url: "/projects",
     cName: "Projects",
+    class: "nav__list-elem",
   },
 ];
 
