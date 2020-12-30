@@ -1,0 +1,24 @@
+.aboutme {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 5vh;
+    width: 100%;
+    font-family: "Source Code Pro", monospace;
+    max-width: 1000px;
+    min-width: 400px;
+  }
+
+  &__title {
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    margin: 5vh;
+  }
+
+  &__text {
+    color: white;
+    font-size: 30px;
+  }
+}
