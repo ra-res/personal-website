@@ -2,6 +2,7 @@
   &__container {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     width: 100%;
     font-size: 45px;
     justify-content: flex-start;
@@ -11,16 +12,16 @@
   &__container-mobile {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     width: 100%;
-    font-size: 40px;
+    font-size: 45px;
     text-align: center;
-    justify-content: center;
+    justify-content: flex-start;
     white-space: nowrap;
   }
 
   &__list-elem {
     color: rgb(0, 158, 0);
-    display: grid;
     margin-left: 1%;
     transform: translateY(10%);
     text-decoration: none;
@@ -42,35 +43,6 @@
   &__title:hover {
     color: rgb(181, 231, 181);
     cursor: pointer;
-  }
-
-  // @media screen and (max-width: 600px) {
-  //   &__container {
-  //     &__container {
-  //       display: flex;
-  //       flex-direction: row;
-  //       flex-wrap: wrap;
-  //       width: 100%;
-  //       font-size: 30px;
-  //       justify-content: center;
-  //       white-space: nowrap;
-  //     }
-  //   }
-  //   &__title {
-  //     font-size: 50px;
-  //     color: rgb(0, 218, 0);
-  //     text-shadow: 0 0 15px rgb(0, 218, 0);
-  //     white-space: nowrap;
-  //   }
-  // }
-
-  &__curly-bracket {
-    font-size: 12px;
-    color: rgb(0, 218, 0);
-    text-shadow: 0 0 15px rgb(0, 218, 0);
-    white-space: nowrap;
-    margin-top: 5px;
-    margin-bottom: 5px;
   }
 }
 

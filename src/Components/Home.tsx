@@ -1,8 +1,10 @@
+import "./Styles/Home.scss";
+
 export default function Home() {
   return (
     <div>
       {" "}
-      <span> This is the home </span>{" "}
+      <p className="home__hello">Hello</p>
     </div>
   );
 }
