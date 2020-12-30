@@ -16,7 +16,6 @@
     text-align: center;
     justify-content: center;
     white-space: nowrap;
-    overflow: hidden;
   }
 
   &__list-elem {
@@ -24,6 +23,7 @@
     display: grid;
     margin-left: 1%;
     transform: translateY(10%);
+    text-decoration: none;
   }
 
   &__list-elem:hover {

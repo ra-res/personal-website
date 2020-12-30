@@ -1,13 +1,18 @@
 const MenuList = [
   {
+    title: "",
+    url: "/",
+    cName: "Home",
+  },
+  {
     title: "[About me]",
-    url: "#",
-    cName: "nav-links",
+    url: "/aboutme",
+    cName: "Aboutme",
   },
   {
     title: "[Projects]",
-    url: "#",
-    cName: "nav-links",
+    url: "/projects",
+    cName: "Projects",
   },
 ];
 
