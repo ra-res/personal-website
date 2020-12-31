@@ -16,7 +16,7 @@ export default function CustomRouter() {
         <Route path="/projects" exact component={Projects} />
         <Route path="/skills" exact component={Skills} />
         <Route path="/opensource" exact component={OpenSource} />
-        <Route path="/contactme" exact component={ContactMe} />
+        <Route path="/contact" exact component={ContactMe} />
       </Switch>
     </Router>
   );
