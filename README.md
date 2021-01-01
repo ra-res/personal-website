@@ -4,7 +4,7 @@ This is my not yet finished portfolio application.
 
 ## Tech Stack at the moment:
 
-[React, TypeScript]
+[React, TypeScript, Node.js, Scss]
 
 ## If you wish to run this locally:
 
