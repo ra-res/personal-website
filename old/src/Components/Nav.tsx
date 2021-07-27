@@ -1,7 +1,9 @@
+/** @format */
+
 import * as React from "react";
 import "./Styles/Nav.scss";
 import MenuList from "./MenuList";
-
+// hello
 export default class Nav extends React.Component {
   state = { matches: window.matchMedia("(min-width: 1000px)").matches };
 
@@ -9,6 +11,7 @@ export default class Nav extends React.Component {
     const handler = (e: any) => this.setState({ matches: e.matches });
     window.matchMedia("(min-width: 1000px)").addListener(handler);
   }
+  a = "hello world \n";
 
   public mapComponent = (cName: string) => {
     return (
@@ -29,12 +32,12 @@ export default class Nav extends React.Component {
       <div>
         {console.log(this.state.matches)}
         {this.state.matches && (
-          <div className="nav__container">
+          <div className='nav__container'>
             {this.mapComponent("nav__container")}
           </div>
         )}
         {!this.state.matches && (
-          <div className="nav__container-mobile">
+          <div className='nav__container-mobile'>
             {this.mapComponent("nav__container-mobile")}{" "}
           </div>
         )}

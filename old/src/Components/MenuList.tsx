@@ -1,3 +1,5 @@
+/** @format */
+
 const MenuList = [
   {
     title: "<Rares Purtan/>",
@@ -25,16 +27,10 @@ const MenuList = [
   },
   {
     title: "[GitHub]",
-    url: "https://github.com/rarespurtan",
+    url: "https://github.com/ra-res",
     cName: "GitHub",
     class: "nav__list-elem",
   },
-  // {
-  //   title: "[Open Source]",
-  //   url: "/opensource",
-  //   cName: "OpenSource",
-  //   class: "nav__list-elem",
-  // },
   {
     title: "[Contact Me]",
     url: "/contact",
