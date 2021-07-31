@@ -1,8 +1,17 @@
+import './style.css'
+
 const canvas = document.getElementById("canvas1");
 const ctx = canvas.getContext('2d');
+const navbar = document.getElementById("navbar");
+let navbarCoord = {
+    top: navbar.getBoundingClientRect().top,
+    bottom: navbar.getBoundingClientRect().bottom,
+    left: navbar.getBoundingClientRect().left,
+    right: navbar.getBoundingClientRect().right,
+}
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-
+let numberOfParticles = (canvas.height * canvas.width) / 6000;
 let particlesArray;
 
 let mouse = {
@@ -43,22 +52,36 @@ class Particle {
             this.directionY = -this.directionY;
         }
 
+        if (this.x > navbarCoord.left && this.y > navbarCoord.top && this.x < navbarCoord.right && this.y < navbarCoord.bottom) {
+            this.directionX = -this.directionX;
+            this.directionY = -this.directionY;
+        }
+
         // collusion detection
         let dx = mouse.x - this.x;
         let dy = mouse.y - this.y;
-        let distance = Math.sqrt(dx * dx + dy * dy) * 2;
+        let distance = Math.sqrt(dx * dx + dy * dy);
+
         if (distance < mouse.radius + this.size) {
             if (mouse.x < this.x && this.x < canvas.width - this.size * 10) {
+                this.directionX = -this.directionX;
                 this.x += 10;
+                if (isInsideNavbar(this)) this.x += navbar.getBoundingClientRect().width;
             }
             if (mouse.x > this.x && this.x > this.size * 10) {
+                this.directionX = -this.directionX;
                 this.x -= 10;
+                if (isInsideNavbar(this)) this.x -= navbar.getBoundingClientRect().width;
             }
             if (mouse.y < this.y && this.y < canvas.height - this.size * 10) {
+                this.directionY = -this.directionY;
                 this.y += 10;
+                if (isInsideNavbar(this)) this.y += navbar.getBoundingClientRect().height;
             }
             if (mouse.y > this.y && this.y > this.size * 10) {
+                this.directionY = -this.directionY;
                 this.y -= 10;
+                if (isInsideNavbar(this)) this.y -= navbar.getBoundingClientRect().height;
             }
         }
         // move particles  and draw
@@ -68,17 +91,55 @@ class Particle {
     }
 }
 
+function createParticleAttributes() {
+    let size, x, y, directionX, directionY, colour = "#8C5523";
+    while (true) {
+        size = (Math.random() * 5) + 1;
+        x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2)
+        y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2)
+        directionX = (Math.random() * 5) - 2.5;
+        directionY = (Math.random() * 5) - 2.5;
+
+        let p = {
+            size: size,
+            x: x,
+            y: y,
+            directionX: directionX,
+            directionY: directionY,
+            colour: colour
+        }
+        if (!isInsideNavbar(p)) {
+            return p;
+        }
+    }
+}
+
+
 function init() {
     particlesArray = []
-    let numberOfParticles = (canvas.height * canvas.width) / 6000;
     for (let i = 0; i < numberOfParticles; i++) {
-        let size = (Math.random() * 5) + 1;
-        let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2)
-        let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2)
-        let directionX = (Math.random() * 5) - 2.5;
-        let directionY = (Math.random() * 5) - 2.5;
-        let colour = "#8C5523";
-        particlesArray.push(new Particle(x, y, directionX, directionY, size, colour));
+        let p = createParticleAttributes();
+        particlesArray.push(new Particle(p.x, p.y, p.directionX, p.directionY, p.size, p.colour));
+    }
+}
+
+function isInsideNavbar(p) {
+    return p.x > navbarCoord.left && p.y > navbarCoord.top && p.x < navbarCoord.right && p.y < navbarCoord.bottom;
+}
+
+function isOutsideViewport(p) {
+    return this.x > canvas.width || this.x < 0 || this.y > canvas.height || this.y < 0;
+}
+
+
+function updateOnResize() {
+    if (particlesArray.length === 0) particlesArray = []
+
+    for (let i = 0; i < numberOfParticles; i++) {
+        if (particlesArray[i] === null || isInsideNavbar(particlesArray[i]) || isOutsideViewport(particlesArray[i])) {
+            let p = createParticleAttributes();
+            particlesArray[i] = new Particle(p.x, p.y, p.directionX, p.directionY, p.size, p.colour);
+        }
     }
 }
 
@@ -89,7 +150,6 @@ function animate() {
     for (let i = 0; i < particlesArray.length; i++) {
         particlesArray[i].update();
     }
-
     connect();
 }
 
@@ -103,8 +163,8 @@ function connect() {
             // + ((particlesArray[a].y - particlesArray[b].y)
             // * (particlesArray[a].y - particlesArray[b].y));
             if (distance < (canvas.width / 7) * (canvas.height / 7) / 3) {
-                opacityValue = 1 - (distance/20000);
-                ctx.strokeStyle = "rgba(140,82,31,"+ opacityValue +")";
+                opacityValue = 1 - (distance / 20000);
+                ctx.strokeStyle = "rgba(140,82,31," + opacityValue + ")";
                 ctx.beginPath();
                 ctx.moveTo(particlesArray[a].x, particlesArray[a].y)
                 ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
@@ -119,6 +179,14 @@ window.addEventListener('resize',
         canvas.width = innerWidth;
         canvas.height = innerHeight;
         mouse.radius = (canvas.height / 80) * (canvas.width / 80);
+        numberOfParticles = (canvas.height * canvas.width) / 6000;
+        navbarCoord.top = navbar.getBoundingClientRect().top;
+        navbarCoord.bottom = navbar.getBoundingClientRect().bottom;
+        navbarCoord.left = navbar.getBoundingClientRect().left
+        navbarCoord.right = navbar.getBoundingClientRect().right
+
+        // updateOnResize();
+        init();
     })
 
 window.addEventListener('mouseout',
@@ -126,5 +194,6 @@ window.addEventListener('mouseout',
         mouse.x = undefined;
         mouse.y = undefined;
     })
+
 init();
 animate();
