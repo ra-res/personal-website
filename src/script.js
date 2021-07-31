@@ -1,6 +1,8 @@
 import './style.css'
+import $ from 'jquery'
 
 const canvas = document.getElementById("canvas1");
+$(canvas).css("background-color", "black")
 const ctx = canvas.getContext('2d');
 const navbar = document.getElementById("navbar");
 let navbarCoord = {
@@ -40,7 +42,7 @@ class Particle {
     draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-        ctx.fillStyle = "#8C55323";
+        ctx.fillStyle = "#ffffff";
         ctx.fill();
     }
 
@@ -61,7 +63,6 @@ class Particle {
         let dx = mouse.x - this.x;
         let dy = mouse.y - this.y;
         let distance = Math.sqrt(dx * dx + dy * dy);
-
         if (distance < mouse.radius + this.size) {
             if (mouse.x < this.x && this.x < canvas.width - this.size * 10) {
                 this.directionX = -this.directionX;
@@ -91,15 +92,19 @@ class Particle {
     }
 }
 
+function scale (number, inMin, inMax, outMin, outMax) {
+    return (number - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
+}
+
 function createParticleAttributes() {
-    let size, x, y, directionX, directionY, colour = "#8C5523";
+    let size, x, y, directionX, directionY, colour = "#ffffff";
     while (true) {
         size = (Math.random() * 5) + 1;
         x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2)
         y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2)
-        directionX = (Math.random() * 5) - 2.5;
-        directionY = (Math.random() * 5) - 2.5;
-
+        directionX = Math.random() - 0.5;
+        directionY = Math.random() - 0.5;
+        colour = "rgba(255,255,255," + Math.random() + ")";
         let p = {
             size: size,
             x: x,
@@ -162,9 +167,9 @@ function connect() {
             // * (particlesArray[a].x - particlesArray[b].x))
             // + ((particlesArray[a].y - particlesArray[b].y)
             // * (particlesArray[a].y - particlesArray[b].y));
-            if (distance < (canvas.width / 7) * (canvas.height / 7) / 3) {
+            if (distance < (canvas.width / 7) * (canvas.height / 7) / 6) {
                 opacityValue = 1 - (distance / 20000);
-                ctx.strokeStyle = "rgba(140,82,31," + opacityValue + ")";
+                ctx.strokeStyle = "rgba(255,255,255," + opacityValue + ")";
                 ctx.beginPath();
                 ctx.moveTo(particlesArray[a].x, particlesArray[a].y)
                 ctx.lineTo(particlesArray[b].x, particlesArray[b].y);

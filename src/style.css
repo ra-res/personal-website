@@ -1,3 +1,8 @@
+@font-face {
+    font-family: cosmic;
+    src: url(cosmic.ttf);
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -6,6 +11,7 @@
 
 html, body {
     height: 100%;
+    font-family:  -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif, serif;
 }
 
 #canvas1 {
@@ -25,16 +31,20 @@ html, body {
 }
 
 .content {
-    border: 2px solid black;
-    background-color: white;
+    border: 2px solid white;
+    background-color: #2F4F4F;
     z-index: 1000;
-    font-weight: bold;
-    width: 500px;
-    height: 250px;
+    width: 600px;
+    height: auto;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: white;
+}
+.content > h1 {
+    margin-bottom: 10px;
 }
 
 .list {
@@ -44,11 +54,24 @@ html, body {
 }
 
 .list > p {
-    margin: 2px;
+    font-size: 1.5rem;
+    font-family:  -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif, serif;
+    margin-right: 0.5rem;
+    margin-bottom: 1.5rem;
 }
 
+.list > p:last-child {
+    font-size: 1.5rem;
+    margin-right: 0;
+    margin-bottom: 1.5rem;
+}
 .divider {
-    width: 350px;
-    border-bottom: 2px solid black;
-    margin-bottom: 15px;
+    width: 60%;
+    border-bottom: 2px solid white;
+    margin-bottom: 1.5rem;
+}
+
+.content > p:last-child {
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
 }
