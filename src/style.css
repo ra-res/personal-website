@@ -56,8 +56,19 @@ html, body {
 .list > p {
     font-size: 1.5rem;
     font-family:  -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif, serif;
-    margin-right: 0.5rem;
+    margin-right: 1.5rem;
     margin-bottom: 1.5rem;
+}
+
+p > a {
+    text-decoration: none;
+    color: white;
+}
+
+p > a:hover {
+    text-decoration: none;
+    text-shadow: 2px 2px 25px yellow;
+    color: white;
 }
 
 .list > p:last-child {
@@ -74,4 +85,18 @@ html, body {
 .content > p:last-child {
     font-size: 1rem;
     margin-bottom: 0.2rem;
+}
+
+.config {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: auto;
+    background-color: black;
+    color: white;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    padding: 0.2rem;
 }

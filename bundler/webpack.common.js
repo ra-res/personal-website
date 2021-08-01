@@ -5,7 +5,7 @@ const path = require('path')
 
 module.exports = {
     entry: {
-        home: path.resolve(__dirname, '../src/script.js'),
+        home: path.resolve(__dirname, '../src/index.js'),
         whoami: path.resolve(__dirname, '../src/whoami.js'),
     },
     output:

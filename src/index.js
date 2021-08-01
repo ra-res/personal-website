@@ -16,6 +16,32 @@ canvas.height = window.innerHeight;
 let numberOfParticles = (canvas.height * canvas.width) / 6000;
 let particlesArray;
 
+let config = {
+    backgroundColor: "black",
+    particleSize: 3.5,
+    particleColour: "white",
+    connectionSize: 7.5,
+    connectionColour: "white",
+}
+
+let particleSizeInput = document.getElementById("particleSize");
+particleSizeInput.min = 1
+particleSizeInput.max= 7
+particleSizeInput.value= config.particleSize
+particleSizeInput.addEventListener("input", function () {
+   config.particleSize = parseInt(this.value);
+   init();
+})
+
+let connectionSizeInput = document.getElementById("connectionSize");
+connectionSizeInput.min = 1;
+connectionSizeInput.max = 15;
+connectionSizeInput.value = config.connectionSize;
+connectionSizeInput.addEventListener("input", function () {
+    config.connectionSize = parseInt(this.value);
+    init();
+})
+
 let mouse = {
     x: null,
     y: null,
@@ -99,7 +125,8 @@ function scale (number, inMin, inMax, outMin, outMax) {
 function createParticleAttributes() {
     let size, x, y, directionX, directionY, colour = "#ffffff";
     while (true) {
-        size = (Math.random() * 5) + 1;
+
+        size = (Math.random() * config.particleSize) + 1;
         x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2)
         y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2)
         directionX = Math.random() - 0.5;
@@ -167,7 +194,7 @@ function connect() {
             // * (particlesArray[a].x - particlesArray[b].x))
             // + ((particlesArray[a].y - particlesArray[b].y)
             // * (particlesArray[a].y - particlesArray[b].y));
-            if (distance < (canvas.width / 7) * (canvas.height / 7) / 6) {
+            if (distance < (canvas.width / 7) * (canvas.height / 7))  {
                 opacityValue = 1 - (distance / 20000);
                 ctx.strokeStyle = "rgba(255,255,255," + opacityValue + ")";
                 ctx.beginPath();
