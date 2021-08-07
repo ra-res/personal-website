@@ -100,3 +100,32 @@ p > a:hover {
     flex-direction: column;
     padding: 0.2rem;
 }
+
+.config > * {
+    margin: 0.2rem;
+}
+
+.colour-presets {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+#preset-1,
+#preset-2,
+#preset-3,
+#preset-4,
+#preset-5,
+#preset-6{
+    border:2px solid transparent;
+}
+
+#preset-1:hover,
+#preset-2:hover,
+#preset-3:hover,
+#preset-4:hover,
+#preset-5:hover,
+#preset-6:hover {
+  border:2px solid green;
+}

@@ -9,10 +9,47 @@
 </head>
 <body>
 <div class="config">
-        <label for="particleSize">Size:</label>
+        <div>
+            <label for="movement">Movement:</label>
+            <input type="checkbox" checked id="movement">
+        </div>
+        <label for="particleSize">Particle Size:</label>
         <input type="range"  id="particleSize">
-        <label for="connectionSize">Connection Size:</label>
+        <label for="connectionSize">Connection Type:</label>
         <input type="range" id="connectionSize">
+        <label>Colour presets</label>
+    <div class="colour-presets">
+        <div id="preset-1">
+            <div style="height:20px; width:20px; overflow: hidden; background-color:white">
+                <div style="width:0; height:0; border-top: 20px solid black; border-right: 20px solid transparent"></div>
+            </div>
+        </div>
+        <div id="preset-2">
+            <div style="height:20px; width:20px; overflow: hidden; background-color:black">
+                <div style="width:0; height:0; border-top: 20px solid white; border-right: 20px solid transparent"></div>
+            </div>
+        </div>
+        <div id="preset-3">
+            <div style="height:20px; width:20px; overflow: hidden; background-color:red">
+                <div style="width:0; height:0; border-top: 20px solid grey; border-right: 20px solid transparent"></div>
+            </div>
+        </div>
+        <div id="preset-4">
+            <div style="height:20px; width:20px; overflow: hidden; background-color:red">
+                <div style="width:0; height:0; border-top: 20px solid grey; border-right: 20px solid transparent"></div>
+            </div>
+        </div>
+        <div id="preset-5">
+            <div style="height:20px; width:20px; overflow: hidden; background-color:red">
+                <div style="width:0; height:0; border-top: 20px solid grey; border-right: 20px solid transparent"></div>
+            </div>
+        </div>
+        <div id="preset-6">
+            <div style="height:20px; width:20px; overflow: hidden; background-color:red">
+                <div style="width:0; height:0; border-top: 20px solid grey; border-right: 20px solid transparent"></div>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="container">
     <div class="content" id="navbar">
