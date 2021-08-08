@@ -129,3 +129,7 @@ p > a:hover {
 #preset-6:hover {
   border:2px solid green;
 }
+
+.active {
+    border:2px solid green;
+}

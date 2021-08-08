@@ -37,6 +37,14 @@ const themes = {
     orange: {
         particle: {r:0, b:0, g:0},
         background: "#b3864d"
+    },
+    green: {
+        particle: {r:252, b:118, g:106},
+        background: "#2F4F4F",
+    },
+    purple: {
+        particle: {r:255, b:154, g:0},
+        background: "#660066",
     }
 }
 
@@ -92,13 +100,10 @@ document.getElementById("preset-3").addEventListener("click", function() {
     setTheme("orange");
 });
 document.getElementById("preset-4").addEventListener("click", function() {
-    setTheme("dark");
+    setTheme("green");
 });
 document.getElementById("preset-5").addEventListener("click", function() {
-    setTheme("dark");
-});
-document.getElementById("preset-6").addEventListener("click", function() {
-    setTheme("dark");
+    setTheme("purple");
 });
 
 function setTheme(id) {
